@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "createnuclear_radiation:block/death_log_top",
+    "side": "createnuclear_radiation:block/death_log"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "death.attack.createnuclear_radiation.radiation": "%1$s died of radiation",
+  "death.attack.createnuclear_radiation.radiation.player": "%1$s died of radiation by %2$s",
+  "block.createnuclear_radiation.radioactive_block": "Radioactive block",
+  "block.createnuclear_radiation.death_grass_block": "Death Grass Block",
+  "block.createnuclear_radiation.death_log": "Death log",
+  "creativetab.createnuclear_radiation.createnuclear_radiation_tab": "Create Nuclear Radiation"
+}

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "net.Wekston.createnuclear_radiation.content.Mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ReactorCoreEntityMixin",
+    "RadiationEffectMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "createnuclear_radiation.refmap.json"
+}
