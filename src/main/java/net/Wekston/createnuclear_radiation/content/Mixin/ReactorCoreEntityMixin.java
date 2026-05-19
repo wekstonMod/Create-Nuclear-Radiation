@@ -1,8 +1,8 @@
-package net.Wekston.createnuclear_radiation.content.Mixin;
+package net.Wekston.createnuclear_radiation.foundation.mixin;
 
 import net.Wekston.createnuclear_radiation.CNRAllBlocks;
-import net.Wekston.createnuclear_radiation.content.Blocks.RadioActiveBlock;
-import net.Wekston.createnuclear_radiation.content.Event.ExposionParcitleSpawn;
+import net.Wekston.createnuclear_radiation.foundation.Blocks.RadioActiveBlock;
+import net.Wekston.createnuclear_radiation.foundation.Event.ExposionParcitleSpawn;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.Level;
@@ -39,7 +39,7 @@ public class ReactorCoreEntityMixin {
                         world.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 3);
                         if (y == 0) {
                             Random random = new Random();
-                            if (random.nextFloat() < 0.2f) {
+                            if (random.nextFloat() < 0.05f) {
                                 int layer = random.nextInt(1, 3);
                                 BlockState radiation = CNRAllBlocks.RADIOACTIVE_BLOCK.get().defaultBlockState().setValue(RadioActiveBlock.LAYERS, layer);
                                 world.setBlock(blockPos, radiation, 3);
