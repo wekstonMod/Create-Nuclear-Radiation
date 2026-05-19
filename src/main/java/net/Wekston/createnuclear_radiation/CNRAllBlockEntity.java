@@ -16,4 +16,5 @@ public class CNRAllBlockEntity {
                             RadioActiveBlockEntity::new,
                             CNRAllBlocks.RADIOACTIVE_BLOCK.get()
                     ).build(null));
+
 }

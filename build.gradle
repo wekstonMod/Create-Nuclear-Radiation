@@ -66,7 +66,6 @@ repositories {
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
 
 }
-
 mixin {
     add sourceSets.main, 'createnuclear_radiation.refmap.json'
     config 'createnuclear_radiation.mixins.json'
@@ -74,13 +73,14 @@ mixin {
     debug.export = true
 
 }
+
 dependencies {
     annotationProcessor  'org.spongepowered:mixin:0.8.5:processor'
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
     implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    compileOnly fg.deobf("curse.maven:createnuclear-989797:7210471")
+    implementation fg.deobf("curse.maven:createnuclear-989797:7210471")
     // Create
     implementation(fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false })
     implementation(fg.deobf("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}"))

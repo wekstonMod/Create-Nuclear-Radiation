@@ -20,6 +20,7 @@ public class CNRCreativeModTabs {
                         pOutput.accept(CNRAllBlocks.RADIOACTIVE_BLOCK.get());
                         pOutput.accept(CNRAllBlocks.DEATH_GRASS_BLOCK.get());
                         pOutput.accept(CNRAllBlocks.DEATH_LOG.get());
+                        pOutput.accept(CNRAllItems.DOZIMETER.get());
 
                     })
                     .build());

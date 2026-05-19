@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "T": {
+      "item": "create:transmitter"
+    },
+    "R": {
+      "item": "create:redstone_link"
+    },
+    "Z": {
+      "item": "create:zinc_ingot"
+    }
+  },
+  "pattern": [
+    "T  ",
+    "R  ",
+    "Z  "
+  ],
+  "result": {
+    "item": "createnuclear_radiation:dozimeter"
+  },
+  "show_notification": true
+}

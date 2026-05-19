@@ -1,7 +1,7 @@
 package net.Wekston.createnuclear_radiation;
 
 import com.google.common.base.Supplier;
-import net.Wekston.createnuclear_radiation.content.Blocks.RadioActiveBlock;
+import net.Wekston.createnuclear_radiation.foundation.Blocks.RadioActiveBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -20,11 +20,12 @@ public class CNRAllBlocks {
 
     public static final RegistryObject<Block> RADIOACTIVE_BLOCK =
             registerBlock("radioactive_block",
-                    () -> new RadioActiveBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+                    () -> new RadioActiveBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).dynamicShape().lightLevel((p_220867_) -> {
+                        return 10;})));
 
     public static final RegistryObject<Block> DEATH_GRASS_BLOCK =
             registerBlock("death_grass_block",
-                    () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).noOcclusion()));
+                    () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
 
     public static final RegistryObject<Block> DEATH_LOG =
             registerBlock("death_log",

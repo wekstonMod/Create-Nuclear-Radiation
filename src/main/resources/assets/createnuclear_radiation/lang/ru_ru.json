@@ -4,5 +4,8 @@
   "block.createnuclear_radiation.radioactive_block": "Радиоактивный блок",
   "block.createnuclear_radiation.death_grass_block": "Мертвый дёрн",
   "block.createnuclear_radiation.death_log": "Мертвое бревно",
-  "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation"
+  "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation",
+  "createnuclear_radiation.dozimeter.1": "Радиационный фон: %.2f Гр/с",
+  "createnuclear_radiation.dozimeter.2": "Поглощенная доза: %.2f Гр",
+  "item.createnuclear_radiation.dozimeter": "Дозиметер"
 }
