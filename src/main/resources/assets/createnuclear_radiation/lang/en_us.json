@@ -4,8 +4,19 @@
   "block.createnuclear_radiation.radioactive_block": "Radioactive block",
   "block.createnuclear_radiation.death_grass_block": "Death Grass Block",
   "block.createnuclear_radiation.death_log": "Death log",
-  "creativetab.createnuclear_radiation.createnuclear_radiation_tab": "Create Nuclear Radiation",
-  "createnuclear_radiation.dozimeter.1": "Radiaion background: %.2f Gy/s",
-  "createnuclear_radiation.dozimeter.2": "Absorbed dose: %.2f Gy",
-  "item.createnuclear_radiation.dozimeter": "Dozimeter"
+  "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation",
+  "createnuclear_radiation.dozimeter.1": "     §e☢ §6Dozimeter §e☢",
+  "createnuclear_radiation.dozimeter.2": "Radiaion background: %.2f",
+  "createnuclear_radiation.dozimeter.3": "Absorbed dose: %.2f",
+  "item.createnuclear_radiation.dozimeter": "Dozimeter",
+
+  "createnuclear_radiation.command.change.player.single": "Player %s radiation has been changed to %s",
+  "createnuclear_radiation.command.info.single": "Information about the %s player:\n",
+  "createnuclear_radiation.command.info.radiation.single": "The amount of radiation: %.2f RAD"  ,
+  "createnuclear_radiation.command.info.gettingradiation.single": "Get a absorbed dose: %.2f",
+
+  "createnuclear_radiation.command.change.player.multiple": "Radiation for %s players has been changed to %s",
+  "createnuclear_radiation.command.info.multiple": "Information about %s player:\n",
+  "createnuclear_radiation.command.info.radiation.multiple": "The amount of radiation (average): %.2f",
+  "createnuclear_radiation.command.info.gettingradiation.multiple": "Get a absorbed dose (average): %.2f"
 }

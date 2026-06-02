@@ -1,7 +1,6 @@
 package net.Wekston.createnuclear_radiation.content.BlockEntity;
 
 import net.Wekston.createnuclear_radiation.CNRAllBlockEntity;
-import net.Wekston.createnuclear_radiation.CNRAllDamageSources;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,22 +35,15 @@ public class RadioActiveBlockEntity extends BlockEntity {
         for (LivingEntity entity : entities) {
             double distanceEntity = entity.distanceToSqr(pos.getCenter());
             double distance = Math.sqrt(distanceEntity);
-            if (entity instanceof Player) {
-                Player player = (Player) entity;
-                if (player != null) {
-                    if (distance < RADIUS && distance >= 0) {
-                        double radiation = (10 * (1.0 - distance / RADIUS));
-                        RadioactiveBlockEvent.RadiationPlayer(player.getUUID(), radiation);
-                    }
-                    else {
-                        double radiation = 0;
-                        RadioactiveBlockEvent.RadiationPlayer(player.getUUID(), radiation);
-
-                    }
-                }
-            }else {
-                if (distance < 20 * 20) {
-                    entity.hurt(CNRAllDamageSources.radiation(level), (float) 2);
+            if (distance <= 10) {
+                entity.setRemainingFireTicks(3 * 20);
+            }
+            if (entity instanceof Player player) {
+                if (!player.isCreative()) {
+                    double radiation = (10 * (1.0 - distance / RADIUS));
+                    RadioactiveBlockEvent.RadiationPlayer(player.getUUID(), radiation);
+                } else {
+                    RadioactiveBlockEvent.RadiationPlayer(player.getUUID(), 0);
                 }
             }
         }

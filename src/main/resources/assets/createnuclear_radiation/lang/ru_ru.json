@@ -5,7 +5,18 @@
   "block.createnuclear_radiation.death_grass_block": "Мертвый дёрн",
   "block.createnuclear_radiation.death_log": "Мертвое бревно",
   "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation",
-  "createnuclear_radiation.dozimeter.1": "Радиационный фон: %.2f Гр/с",
-  "createnuclear_radiation.dozimeter.2": "Поглощенная доза: %.2f Гр",
-  "item.createnuclear_radiation.dozimeter": "Дозиметер"
+  "createnuclear_radiation.dozimeter.1": "     §e☢ §6Дозиметер §e☢",
+  "createnuclear_radiation.dozimeter.2": "Радиационный фон: %.2f",
+  "createnuclear_radiation.dozimeter.3": "Поглощенная доза: %.2f",
+  "item.createnuclear_radiation.dozimeter": "Дозиметер",
+
+  "createnuclear_radiation.command.change.player.single": "Радиация игрока %s была изменена на %s",
+  "createnuclear_radiation.command.info.single": "Информация об игроке %s:\n",
+  "createnuclear_radiation.command.info.radiation.single": "Количество радиации: %.2f RAD",
+  "createnuclear_radiation.command.info.gettingradiation.single": "Получает дозу: %.2f",
+
+  "createnuclear_radiation.command.change.player.multiple": "Радиация для %s игроков была изменена на %s",
+  "createnuclear_radiation.command.info.multiple": "Информация о %s игроков:\n",
+  "createnuclear_radiation.command.info.radiation.multiple": "Количество радиации (среднее): %.2f",
+  "createnuclear_radiation.command.info.gettingradiation.multiple": "Получают дозу (среднюю): %.2f"
 }

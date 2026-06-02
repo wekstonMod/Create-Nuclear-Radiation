@@ -1,8 +1,12 @@
 package net.Wekston.createnuclear_radiation;
 
+import com.simibubi.create.infrastructure.command.AllCommands;
 import net.Wekston.createnuclear_radiation.content.network.NetworkHandler;
+import net.Wekston.createnuclear_radiation.infrastructure.command.CNRAllCommands;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

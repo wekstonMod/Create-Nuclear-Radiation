@@ -14,7 +14,7 @@ public class CNRCreativeModTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreateNuclearRadiation.MODID);
 
     public static final RegistryObject<CreativeModeTab> CREATE_NUCLEAR_RADIATION = CREATIVE_MODE_TABS.register("createnuclear_radiation_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(CNRAllBlocks.RADIOACTIVE_BLOCK.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(CNRAllItems.DOZIMETER.get()))
                     .title(Component.translatable("creativetab.createnuclear_radiation_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(CNRAllBlocks.RADIOACTIVE_BLOCK.get());

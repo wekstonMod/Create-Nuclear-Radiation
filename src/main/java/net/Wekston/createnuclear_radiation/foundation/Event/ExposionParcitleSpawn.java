@@ -25,7 +25,7 @@ public class ExposionParcitleSpawn {
         }
     }
     public static void executeExplosionParticle(Level level, BlockPos pos, int radius) {
-        final double countParticle = radius * 2.5;
+        final double countParticle = radius * 1.8;
         for (int i = 0; i < countParticle; i++) {
             double angle = 2 * Math.PI * i / countParticle;
             double xOffset = Math.cos(angle) * radius;

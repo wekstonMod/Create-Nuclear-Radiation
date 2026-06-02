@@ -4,12 +4,14 @@ import net.Wekston.createnuclear_radiation.CNRAllBlocks;
 import net.Wekston.createnuclear_radiation.CNRAllDamageSources;
 import net.Wekston.createnuclear_radiation.CreateNuclearRadiation;
 import net.Wekston.createnuclear_radiation.content.PlayerData.PlayerDataManager;
+import net.Wekston.createnuclear_radiation.infrastructure.command.CNRAllCommands;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -55,5 +57,10 @@ public class PlayerEvent {
                 PlayerDataManager.setRadiation(player, effect);
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void registerCommands(RegisterCommandsEvent event) {
+        CNRAllCommands.register(event.getDispatcher());
     }
 }
