@@ -30,7 +30,6 @@ public class PlayerEventHandler {
         }
     }
 
-
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
@@ -39,12 +38,14 @@ public class PlayerEventHandler {
             syncPlayerRadiation(serverPlayer);
         }
     }
+
     @SubscribeEvent
     public static void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
             syncPlayerRadiation(serverPlayer);
         }
     }
+
     @SubscribeEvent
     public static void onPlayerSave(PlayerEvent.SaveToFile event) {
         if (event.getEntity() instanceof ServerPlayer serverPlayer) {
@@ -64,19 +65,18 @@ public class PlayerEventHandler {
                 if (oldData.contains(PlayerDataManager.RADIATION_KEY)) {
                     CompoundTag radiationData = oldData.getCompound(PlayerDataManager.RADIATION_KEY);
                     newServerPlayer.getPersistentData().put(PlayerDataManager.RADIATION_KEY, radiationData);
-                    }
+                }
             }
         }
     }
 
     public static void syncPlayerRadiation(ServerPlayer player) {
-        if (player.connection == null) {
-            return;
-        }
         PlayerLevelsManager radiation = PlayerDataManager.getPlayerRadiation(player);
         NetworkHandler.sendToClient(player, new SyncPlayerRadiationPacket(
                 radiation.getRadiation(),
-                radiation.gettingRadiation()
+                radiation.gettingRadiation(),
+                radiation.getImmunity(),
+                radiation.getImmunityXP()
         ));
     }
 }

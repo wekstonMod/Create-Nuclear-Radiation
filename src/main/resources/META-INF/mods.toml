@@ -1,11 +1,11 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
-
 [[mods]]
 modId="createnuclear_radiation"
 logoFile = "icon.png"
 version="${mod_version}"
+displayURL = "https://modrinth.com/mod/create-nuclear-radiation"
 displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''

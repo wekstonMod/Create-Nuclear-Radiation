@@ -1,10 +1,9 @@
 package net.Wekston.createnuclear_radiation.content.BlockEntity;
 
 import net.Wekston.createnuclear_radiation.CNRAllDamageSources;
+import net.Wekston.createnuclear_radiation.Config;
 import net.Wekston.createnuclear_radiation.CreateNuclearRadiation;
 import net.Wekston.createnuclear_radiation.content.PlayerData.PlayerDataManager;
-import net.Wekston.createnuclear_radiation.content.PlayerData.PlayerLevelsManager;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -44,32 +43,38 @@ public class RadioactiveBlockEvent {
         Random random = new Random();
         if (radiationTick == 5) {
             radiationCheck = radiation;
+            if (PlayerDataManager.getImmunityXP(player) >= PlayerDataManager.getImmunity(player) * 300 && PlayerDataManager.getImmunity(player) < 10) {
+                PlayerDataManager.setImmunityXP(player, PlayerDataManager.getImmunityXP(player) - PlayerDataManager.getImmunity(player) * 300);
+                PlayerDataManager.setImmunity(player, PlayerDataManager.getImmunity(player) + 0.1);
+            }
         }
         if (radiationTick >= 10) {
             if (radiationCheck >= radiation) {
                 PlayerDataManager.setgettingRadiation(player, 0);
             }
             if (radiation > 0 && PlayerDataManager.gettingRadiation(player) < 0.5) {
-                PlayerDataManager.setRadiation(player, radiation - 0.01 * radiation);
+                double clearRadiation = Config.COMMON.clearRadiation.get() * radiation;
+                PlayerDataManager.setRadiation(player, radiation - clearRadiation);
+                if (PlayerDataManager.getImmunity(player) < 10) {
+                    PlayerDataManager.setImmunityXP(player, PlayerDataManager.getImmunityXP(player) + clearRadiation);
+                }
             }
             radiationTick = 0;
-            if (radiation > 200) {
-                if (random.nextFloat() > 0.6) {
-                    player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, (int) (20 * radiation / 100), 0, false, false));
-                }
-                if (radiation >= 500 && random.nextFloat() < 0.45) {
-                    player.hurt(CNRAllDamageSources.radiation(level), 100.0f);
-                }
-                if (radiation > 300 && random.nextFloat() < 0.2) {
-                    player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, (int) (10 * radiation / 80), 1, false, false));
-                }
-                if (radiation > 400 && random.nextFloat() > 0.8) {
-                    player.addEffect(new MobEffectInstance(MobEffects.POISON, (int) (20 * radiation / 50), 2, false, false));
-                }
+            double immunityPlayer = PlayerDataManager.getImmunity(player);
+            if (radiation > Config.COMMON.giveEffectBlidness.get() * immunityPlayer && random.nextFloat() > 0.6) {
+                player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, (int) (20 * radiation / 100), 0, false, false));
+            }
+            if (radiation > Config.COMMON.giveEffectConfusion.get() * immunityPlayer && random.nextFloat() < 0.2) {
+                player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, (int) (10 * radiation / 80), 1, false, false));
+            }
+            if (radiation > Config.COMMON.giveEffectPoison.get() * immunityPlayer && random.nextFloat() > 0.8) {
+                player.addEffect(new MobEffectInstance(MobEffects.POISON, (int) (20 * radiation / 50), 2, false, false));
+            }
+            if (radiation >= Config.COMMON.Death.get() * immunityPlayer && random.nextFloat() < 0.45) {
+                player.hurt(CNRAllDamageSources.radiation(level), 100.0f);
             }
         }
     }
-
     public static void RadiationPlayer(UUID playerID, double radiation) {
         Double currentMax = playerMaxRadiation.getOrDefault(playerID, 0.0);
         if (radiation >= currentMax) {

@@ -4,6 +4,7 @@
   "package": "net.Wekston.createnuclear_radiation.foundation.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "IrradiatedOverlayRendererVisionMixin",
     "RadiationEffectMixin",
     "ReactorCoreEntityMixin"
   ],

@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class RadioActiveBlock extends FallingBlock implements EntityBlock {
@@ -64,7 +65,7 @@ public class RadioActiveBlock extends FallingBlock implements EntityBlock {
     }
 
     @Override
-    public VoxelShape getVisualShape(BlockState p_56597_, BlockGetter p_56598_, BlockPos p_56599_, CollisionContext p_56600_) {
+    public @NotNull VoxelShape getVisualShape(BlockState p_56597_, BlockGetter p_56598_, BlockPos p_56599_, CollisionContext p_56600_) {
         return SHAPE[p_56597_.getValue(LAYERS)];
     }
 

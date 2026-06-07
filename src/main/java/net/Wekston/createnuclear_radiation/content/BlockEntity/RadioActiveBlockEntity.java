@@ -1,6 +1,7 @@
 package net.Wekston.createnuclear_radiation.content.BlockEntity;
 
 import net.Wekston.createnuclear_radiation.CNRAllBlockEntity;
+import net.Wekston.createnuclear_radiation.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -15,12 +16,13 @@ public class RadioActiveBlockEntity extends BlockEntity {
         super(CNRAllBlockEntity.RADIOACTIVATE_BLOCKENTITY.get(), pos, state);
     }
 
+    private static final int tickBlock = Config.COMMON.tickRadioactiveBlock.get();
     private int tick = 0;
-    private static final int RADIUS = 100;
+    private static final int RADIUS = Config.COMMON.radiusRadiation.get();
 
     public static void tick(Level level, BlockPos pos, BlockState state, RadioActiveBlockEntity blockEntity) {
         blockEntity.tick++;
-        if (blockEntity.tick >= 10) {
+        if (blockEntity.tick >= tickBlock) {
             blockEntity.tick = 0;
             DistanceEntity(level, pos);
         }
@@ -35,8 +37,8 @@ public class RadioActiveBlockEntity extends BlockEntity {
         for (LivingEntity entity : entities) {
             double distanceEntity = entity.distanceToSqr(pos.getCenter());
             double distance = Math.sqrt(distanceEntity);
-            if (distance <= 10) {
-                entity.setRemainingFireTicks(3 * 20);
+            if (distance <= Config.COMMON.distanceFire.get()) {
+                entity.setRemainingFireTicks(20);
             }
             if (entity instanceof Player player) {
                 if (!player.isCreative()) {

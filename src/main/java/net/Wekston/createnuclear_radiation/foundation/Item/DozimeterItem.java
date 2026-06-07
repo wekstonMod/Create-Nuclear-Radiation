@@ -22,20 +22,23 @@ public class DozimeterItem extends Item {
         if (!level.isClientSide) {
             double gettingRadiation = PlayerDataManager.gettingRadiation(player);
             double radiation = PlayerDataManager.getRadiation(player);
+            double getImmunity = PlayerDataManager.getImmunity(player);
             player.sendSystemMessage(Component.translatable("createnuclear_radiation.dozimeter.1", String.format("%.2f", gettingRadiation)));
-            ChatFormatting color1;
-            if (gettingRadiation < 1) color1 =ChatFormatting.GREEN;
-            else if (gettingRadiation < 7) color1 =ChatFormatting.YELLOW;
-            else color1 =ChatFormatting.RED;
-            Component colorComponent1 = Component.translatable(String.format("%.2f RAD/s", gettingRadiation)).withStyle(color1);
-            player.sendSystemMessage(Component.translatable("createnuclear_radiation.dozimeter.2", colorComponent1));
+            ChatFormatting colorGettingRadiation;
+            if (gettingRadiation < 1) colorGettingRadiation =ChatFormatting.GREEN;
+            else if (gettingRadiation < 7) colorGettingRadiation =ChatFormatting.YELLOW;
+            else colorGettingRadiation =ChatFormatting.RED;
 
-            ChatFormatting color2;
-            if (radiation < 50) color2 =ChatFormatting.GREEN;
-            else if (radiation < 300) color2 =ChatFormatting.YELLOW;
-            else color2 =ChatFormatting.RED;
-            Component colorComponent2 = Component.translatable(String.format("%.2f RAD", radiation)).withStyle(color2);
-            player.sendSystemMessage(Component.translatable("createnuclear_radiation.dozimeter.3", colorComponent2));
+            ChatFormatting colorRadiation;
+            if (radiation < 50 * getImmunity) colorRadiation =ChatFormatting.GREEN;
+            else if (radiation < 300 * getImmunity) colorRadiation =ChatFormatting.YELLOW;
+            else colorRadiation =ChatFormatting.RED;
+
+            Component ComponentGettingRadiation = Component.translatable(String.format("%.2f RAD/s", gettingRadiation)).withStyle(colorGettingRadiation);
+            Component ComponentRadiaion = Component.translatable(String.format("%.2f RAD", radiation)).withStyle(colorRadiation);
+
+            player.sendSystemMessage(Component.translatable("createnuclear_radiation.dozimeter.2", ComponentGettingRadiation));
+            player.sendSystemMessage(Component.translatable("createnuclear_radiation.dozimeter.3", ComponentRadiaion));
             player.sendSystemMessage(Component.literal(" "));
         }
         player.getCooldowns().addCooldown(this, 15);
