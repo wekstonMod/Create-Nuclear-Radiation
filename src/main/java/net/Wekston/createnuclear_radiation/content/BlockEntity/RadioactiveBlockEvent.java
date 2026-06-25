@@ -1,0 +1,118 @@
+package net.Wekston.createnuclear_radiation.content.BlockEntity;
+
+import net.Wekston.createnuclear_radiation.CNRAllDamageSources;
+import net.Wekston.createnuclear_radiation.CNRConfig;
+import net.Wekston.createnuclear_radiation.CreateNuclearRadiation;
+import net.Wekston.createnuclear_radiation.content.PlayerData.PlayerDataManager;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.nuclearteam.createnuclear.content.equipment.armor.AntiRadiationArmorItem;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
+
+@EventBusSubscriber(modid = CreateNuclearRadiation.MODID)
+public class RadioactiveBlockEvent {
+
+    private static int radiationTick = 0;
+    public static final Map<UUID, Double> playerMaxRadiation = new HashMap<>();
+    public static boolean needRadiation = false;
+    private static int tick = 0;
+    private static double radiationCheck = 0;
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        var player = event.getEntity();
+        tick++;
+        if (tick < 20) return;
+        tick = 0;
+        applyRadiation(player);
+        radiationTick++;
+        Level level = player.level();
+        double radiation = PlayerDataManager.getRadiation(player);
+        Random random = new Random();
+        if (radiationTick == 5) {
+            radiationCheck = radiation;
+        }
+        if (radiationTick >= 10) {
+            if (radiationCheck >= radiation) {
+                PlayerDataManager.setgettingRadiation(player, 0);
+            }
+            if (radiation > 0 && PlayerDataManager.gettingRadiation(player) < 0.5) {
+                double clearRadiation = CNRConfig.COMMON.clearRadiation.get() * radiation;
+                PlayerDataManager.setRadiation(player, radiation - clearRadiation);
+                if (PlayerDataManager.getImmunity(player) < 10) {
+                    PlayerDataManager.setImmunityXP(player, PlayerDataManager.getImmunityXP(player) + clearRadiation);
+                }
+            }
+            radiationTick = 0;
+            double immunityPlayer = PlayerDataManager.getImmunity(player);
+            if (radiation > CNRConfig.COMMON.giveEffectBlidness.get() * immunityPlayer && random.nextFloat() > 0.6) {
+                player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, (int) (20 * radiation / 100), 0, false, false));
+            }
+            if (radiation > CNRConfig.COMMON.giveEffectConfusion.get() * immunityPlayer && random.nextFloat() < 0.2) {
+                player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, (int) (10 * radiation / 80), 1, false, false));
+            }
+            if (radiation > CNRConfig.COMMON.giveEffectPoison.get() * immunityPlayer && random.nextFloat() > 0.8) {
+                player.addEffect(new MobEffectInstance(MobEffects.POISON, (int) (20 * radiation / 50), 2, false, false));
+            }
+            if (radiation >= CNRConfig.COMMON.Death.get() * immunityPlayer && random.nextFloat() < 0.45) {
+                player.hurt(CNRAllDamageSources.radiation(level), 100.0f);
+            }
+        }
+    }
+
+    public static void RadiationPlayer(UUID playerID, double radiation) {
+        Double currentMax = playerMaxRadiation.getOrDefault(playerID, 0.0);
+        if (radiation >= currentMax) {
+            playerMaxRadiation.put(playerID, radiation);
+        }
+        else if (radiation == 0) {
+            playerMaxRadiation.put(playerID, radiation);
+        }
+        needRadiation = true;
+    }
+    public static void applyRadiation(Player player) {
+        if (!needRadiation) return;
+        for (Map.Entry<UUID, Double> entry : playerMaxRadiation.entrySet()) {
+            double radiation = entry.getValue();
+            if (player != null) {
+                boolean isWearingAntiRadiationArmor = true;
+                for (ItemStack armor : player.getArmorSlots()) {
+                    if (!AntiRadiationArmorItem.Armor.isArmored2(armor)) {
+                        isWearingAntiRadiationArmor = false;
+                        break;
+                    }
+                }
+                if (!isWearingAntiRadiationArmor) {
+                    PlayerDataManager.addRadiation(player, radiation);
+                    PlayerDataManager.setgettingRadiation(player, radiation);
+                }
+                else {
+                    // Radiation protection in ARMOR
+                    double saveRadiation;
+                    if (radiation < 5) {
+                        saveRadiation = 0.2 * radiation; // 20%
+                    } else if (radiation < 7) {
+                        saveRadiation = 0.4 * radiation; // 40%
+                    } else if (radiation < 9) {
+                        saveRadiation = 0.6 * radiation; // 60%
+                    } else {
+                        saveRadiation = 0.8 * radiation; // 80%
+                    }
+                    PlayerDataManager.addRadiation(player, saveRadiation);
+                    PlayerDataManager.setgettingRadiation(player, saveRadiation);
+                }
+            }
+        }
+        playerMaxRadiation.clear();
+        needRadiation = false;
+    }
+}

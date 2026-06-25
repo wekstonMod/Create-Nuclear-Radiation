@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "createnuclear_radiation:block/death_leaves"
+  }
+}
