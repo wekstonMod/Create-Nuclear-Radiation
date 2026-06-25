@@ -16,10 +16,11 @@ public class CNRCreativeModTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(CNRAllItems.DOZIMETER.get()))
                     .title(Component.translatable("creativetab.createnuclear_radiation_tab"))
                     .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(CNRAllItems.DOZIMETER.get());
                         pOutput.accept(CNRAllBlocks.RADIOACTIVE_BLOCK.get());
                         pOutput.accept(CNRAllBlocks.DEATH_GRASS_BLOCK.get());
                         pOutput.accept(CNRAllBlocks.DEATH_LOG.get());
-                        pOutput.accept(CNRAllItems.DOZIMETER.get());
+                        pOutput.accept(CNRAllBlocks.DEATH_PLANKS.get());
 
                     })
                     .build());

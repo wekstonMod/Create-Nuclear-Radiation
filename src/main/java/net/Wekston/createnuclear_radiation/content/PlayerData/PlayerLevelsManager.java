@@ -2,10 +2,11 @@ package net.Wekston.createnuclear_radiation.content.PlayerData;
 
 import net.minecraft.nbt.CompoundTag;
 
+
 public class PlayerLevelsManager {
     private double radiation;
     private double gettingRadiation;
-    private double immunityLevel;
+    private double immunityLevel = 0.7;
     private double immunityXp;
 
     public double getRadiation() {

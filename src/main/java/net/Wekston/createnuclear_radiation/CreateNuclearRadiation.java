@@ -16,7 +16,7 @@ public class CreateNuclearRadiation
 
     public CreateNuclearRadiation(FMLJavaModLoadingContext context)
     {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CNRConfig.COMMON_SPEC);
         IEventBus modEventBus = context.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         CNRAllParticles.PARTICLE_TYPE.register(modEventBus);

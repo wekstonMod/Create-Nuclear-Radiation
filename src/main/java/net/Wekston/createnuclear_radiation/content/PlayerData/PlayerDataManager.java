@@ -6,8 +6,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.Random;
-
 public class PlayerDataManager {
     public static final String RADIATION_KEY = CreateNuclearRadiation.MODID;
     @OnlyIn(Dist.CLIENT)
@@ -19,8 +17,7 @@ public class PlayerDataManager {
                 clientRadiationCache.setRadiation(0);
                 clientRadiationCache.settingRadiation(0);
                 clientRadiationCache.setImmunityXP(0);
-                Random random = new Random();
-                clientRadiationCache.setImmunity(random.nextFloat(0.7F, 1.1f));
+                clientRadiationCache.setImmunity(0.7);
             }
             return clientRadiationCache;
         } else {

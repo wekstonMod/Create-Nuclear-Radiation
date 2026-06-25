@@ -3,6 +3,7 @@
   "death.attack.createnuclear_radiation.radiation.player": "%1$s died of radiation by %2$s",
   "block.createnuclear_radiation.radioactive_block": "Radioactive block",
   "block.createnuclear_radiation.death_grass_block": "Death Grass Block",
+  "block.createnuclear_radiation.death_planks": "Death Planks",
   "block.createnuclear_radiation.death_log": "Death log",
   "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation",
   "createnuclear_radiation.dozimeter.1": "     §e☢ §6Dozimeter §e☢",
@@ -12,7 +13,7 @@
 
   "createnuclear_radiation.command.change.radiation.single": "Player %s radiation has been changed to %s",
   "createnuclear_radiation.command.change.immunity.single": "Player %s immunity has been changed to %s",
-
+  "createnuclear_radiation.command.change.immunity_xp.single": "Player %s immunity XP has been changed to %s",
   "createnuclear_radiation.command.info.single": "Information about the %s player:\n",
   "createnuclear_radiation.command.info.radiation.single": "The amount of radiation: %.2f"  ,
   "createnuclear_radiation.command.info.gettingradiation.single": "Get a absorbed dose: %.2f",
@@ -21,6 +22,7 @@
 
   "createnuclear_radiation.command.change.radiation.multiple": "Radiation for %s players has been changed to %s",
   "createnuclear_radiation.command.change.immunity.multiple": "Immunity for %s players has been changed to %d",
+  "createnuclear_radiation.command.change.immunity_xp.multiple": "Immunity XP for %s players has been changed to %d",
   "createnuclear_radiation.command.info.multiple": "Information about %s players:\n",
   "createnuclear_radiation.command.info.radiation.multiple": "The amount of radiation (average): %.2f",
   "createnuclear_radiation.command.info.gettingradiation.multiple": "Get a absorbed dose (average): %.2f",

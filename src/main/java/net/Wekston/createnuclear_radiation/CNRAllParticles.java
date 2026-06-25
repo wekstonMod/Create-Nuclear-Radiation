@@ -12,8 +12,11 @@ public class CNRAllParticles {
             DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, CreateNuclearRadiation.MODID);
 
 
-    public static final RegistryObject<SimpleParticleType> EXPLOSSION_REACTOR_1 =
-            PARTICLE_TYPE.register("explosion_reactor_1",
+    public static final RegistryObject<SimpleParticleType> EXPLOSION_DUST =
+            PARTICLE_TYPE.register("explosion_dust",
                     () -> new SimpleParticleType(true));
 
+    public static final RegistryObject<SimpleParticleType> EXPLOSION_SMOKE =
+            PARTICLE_TYPE.register("explosion_smoke",
+                    () -> new SimpleParticleType(true));
 }

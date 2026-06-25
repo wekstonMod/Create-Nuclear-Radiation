@@ -27,6 +27,10 @@ public class CNRAllBlocks {
             registerBlock("death_grass_block",
                     () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
 
+    public static final RegistryObject<Block> DEATH_PLANKS =
+            registerBlock("death_planks",
+                    () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+
     public static final RegistryObject<Block> DEATH_LOG =
             registerBlock("death_log",
                     () -> log(MapColor.WOOD, MapColor.PODZOL));

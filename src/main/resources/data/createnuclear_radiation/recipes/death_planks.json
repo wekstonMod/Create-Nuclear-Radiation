@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "createnuclear_radiation:death_log"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "createnuclear_radiation:death_planks"
+  }
+}

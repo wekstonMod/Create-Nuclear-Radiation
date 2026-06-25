@@ -4,7 +4,6 @@ import net.Wekston.createnuclear_radiation.CNRAllBlocks;
 import net.Wekston.createnuclear_radiation.CreateNuclearRadiation;
 import net.Wekston.createnuclear_radiation.content.PlayerData.PlayerDataManager;
 import net.Wekston.createnuclear_radiation.infrastructure.command.CNRAllCommands;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -43,6 +42,10 @@ public class PlayerEvent {
         }
         if (event.player instanceof ServerPlayer serverPlayer) {
             syncPlayerRadiation(serverPlayer);
+            if (PlayerDataManager.getImmunityXP(player) >= PlayerDataManager.getImmunity(player) * 300 && PlayerDataManager.getImmunity(player) < 10) {
+                PlayerDataManager.setImmunityXP(player, PlayerDataManager.getImmunityXP(player) - PlayerDataManager.getImmunity(player) * 300);
+                PlayerDataManager.setImmunity(player, PlayerDataManager.getImmunity(player) + 0.1);
+            }
         }
     }
 
@@ -61,10 +64,12 @@ public class PlayerEvent {
         CNRAllCommands.register(event.getDispatcher());
     }
 
+    /*
     @SubscribeEvent
     public static void onPlayerLogin(net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
         // For BETA-version
         player.sendSystemMessage(Component.translatable("createnuclear_radiation.system.beta"));
     }
+     */
 }

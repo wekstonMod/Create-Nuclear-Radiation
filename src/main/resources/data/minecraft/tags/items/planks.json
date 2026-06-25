@@ -1,6 +1,6 @@
 {
+  "replace": false,
   "values": [
-    "createnuclear_radiation:death_log",
     "createnuclear_radiation:death_planks"
   ]
 }

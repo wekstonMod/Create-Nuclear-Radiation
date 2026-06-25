@@ -26,6 +26,11 @@ public class ChangeRadiationPlayer {
                                 .then(Commands.argument("count", DoubleArgumentType.doubleArg(0.1, 10))
                                         .executes(ctx -> runChangeImmunity(ctx.getSource(), EntityArgument.getPlayers(ctx, "targets"), DoubleArgumentType.getDouble(ctx, "count")))
                                 )))
+                .then(Commands.literal("immunity_xp")
+                        .then(Commands.argument("targets", EntityArgument.players())
+                                .then(Commands.argument("count", DoubleArgumentType.doubleArg(0.1, 9999))
+                                        .executes(ctx -> runChangeImmunityXp(ctx.getSource(), EntityArgument.getPlayers(ctx, "targets"), DoubleArgumentType.getDouble(ctx, "count")))
+                                )))
 
 
                 ;
@@ -50,6 +55,18 @@ public class ChangeRadiationPlayer {
                 source.sendSuccess(() -> Component.translatable("createnuclear_radiation.command.change.immunity.single", serverPlayer.getDisplayName().copy().withStyle(ChatFormatting.GREEN), PlayerDataManager.getImmunity(serverPlayer)), true);
             } else {
                 source.sendSuccess(() -> Component.translatable("createnuclear_radiation.command.change.immunity.multiple", player.size(), PlayerDataManager.getImmunity(serverPlayer)), true);
+            }
+        }
+        return Command.SINGLE_SUCCESS;
+    }
+
+    private static int runChangeImmunityXp(CommandSourceStack source, Collection<ServerPlayer> player, double numImmunity) {
+        for (ServerPlayer serverPlayer : player) {
+            PlayerDataManager.setImmunityXP(serverPlayer, numImmunity);
+            if (player.size() == 1) {
+                source.sendSuccess(() -> Component.translatable("createnuclear_radiation.command.change.immunity_xp.single", serverPlayer.getDisplayName().copy().withStyle(ChatFormatting.GREEN), PlayerDataManager.getImmunityXP(serverPlayer)), true);
+            } else {
+                source.sendSuccess(() -> Component.translatable("createnuclear_radiation.command.change.immunity_xp.multiple", player.size(), PlayerDataManager.getImmunity(serverPlayer)), true);
             }
         }
         return Command.SINGLE_SUCCESS;
