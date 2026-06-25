@@ -1,8 +1,0 @@
-{
-  "death.attack.createnuclear_radiation.radiation": "%1$s умер от радиации",
-  "death.attack.createnuclear_radiation.radiation.player": "%1$s умер от радиации благодаря %2$s",
-  "block.createnuclear_radiation.radioactive_block": "Радиоактивный блок",
-  "block.createnuclear_radiation.death_grass_block": "Мертвый дёрн",
-  "block.createnuclear_radiation.death_log": "Мертвое бревно",
-  "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation"
-}
