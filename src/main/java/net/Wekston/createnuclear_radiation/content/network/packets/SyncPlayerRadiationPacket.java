@@ -4,9 +4,12 @@ import io.netty.buffer.ByteBuf;
 import net.Wekston.createnuclear_radiation.CreateNuclearRadiation;
 import net.Wekston.createnuclear_radiation.content.PlayerData.PlayerDataManager;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public record SyncPlayerRadiationPacket(Double radiation, Double gettingradiation, double immunity, double immunityXP) implements CustomPacketPayload {
@@ -38,14 +41,19 @@ public record SyncPlayerRadiationPacket(Double radiation, Double gettingradiatio
     public static void handle(SyncPlayerRadiationPacket packet, IPayloadContext context) {
         context.enqueueWork(() -> {
             Minecraft mc = Minecraft.getInstance();
-            if (mc.player != null) {
-                PlayerDataManager.setRadiation(mc.player, packet.radiation);
-                PlayerDataManager.setgettingRadiation(mc.player, packet.gettingradiation);
-                PlayerDataManager.setImmunity(mc.player, packet.immunity);
-                PlayerDataManager.setImmunityXP(mc.player, packet.immunityXP);
+            if (mc.player != null && context.player() instanceof LocalPlayer player) {
+                clientHandle(player, packet);
             }
         });
     }
+    @OnlyIn(Dist.CLIENT)
+    private static void clientHandle(LocalPlayer player, SyncPlayerRadiationPacket packet) {
+        PlayerDataManager.setRadiation(player, packet.radiation);
+        PlayerDataManager.setgettingRadiation(player, packet.gettingradiation);
+        PlayerDataManager.setImmunity(player, packet.immunity);
+        PlayerDataManager.setImmunityXP(player, packet.immunityXP);
+    }
+
     @Override
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
