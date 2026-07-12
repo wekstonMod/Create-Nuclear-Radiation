@@ -1,0 +1,44 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayURL = "https://modrinth.com/mod/create-nuclear-radiation"
+displayName = "${mod_name}"
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+logoFile = "icon.png"
+
+[[mixins]]
+config = "createnuclear_radiation.mixins.json"
+
+[[dependencies."${mod_id}"]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId="create"
+mandatory=true
+versionRange="${create_version_range}"
+ordering="NONE"
+side="BOTH"
+
+
+[[dependencies."${mod_id}"]]
+modId="createnuclear"
+mandatory=true
+versionRange="${createnuclear_version_range}"
+ordering="NONE"
+side="BOTH"

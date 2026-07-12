@@ -3,6 +3,33 @@
   "death.attack.createnuclear_radiation.radiation.player": "%1$s умер от радиации благодаря %2$s",
   "block.createnuclear_radiation.radioactive_block": "Радиоактивный блок",
   "block.createnuclear_radiation.death_grass_block": "Мертвый дёрн",
+  "block.createnuclear_radiation.death_planks": "Мёртвые доски",
   "block.createnuclear_radiation.death_log": "Мертвое бревно",
-  "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation"
+  "creativetab.createnuclear_radiation_tab": "Create Nuclear Radiation",
+  "createnuclear_radiation.dozimeter.1": "     §e☢ §6Дозиметер §e☢",
+  "createnuclear_radiation.dozimeter.2": "Радиационный фон: %.2f",
+  "createnuclear_radiation.dozimeter.3": "Поглощенная доза: %.2f",
+  "item.createnuclear_radiation.dozimeter": "Дозиметер",
+
+  "createnuclear_radiation.command.change.radiation.single": "Радиация игрока %s была изменена на %s",
+  "createnuclear_radiation.command.change.immunity.single": "Иммунитет игрока %s был изменен на %s",
+  "createnuclear_radiation.command.change.immunity_xp.single": "Опыт иммунитета игрока %s был изменен на %s",
+  "createnuclear_radiation.command.info.single": "Информация об игроке %s:\n",
+  "createnuclear_radiation.command.info.radiation.single": "Количество радиации: %.2f",
+  "createnuclear_radiation.command.info.gettingradiation.single": "Получает дозу: %.2f",
+  "createnuclear_radiation.command.info.immunity.single": "Иммунитет: %.1f",
+  "createnuclear_radiation.command.info.immunity_xp.single": "Опыт иммунитета: %s" ,
+
+  "createnuclear_radiation.command.change.radiation.multiple": "Радиация для %s игроков была изменена на %d",
+  "createnuclear_radiation.command.change.immunity.multiple": "Иммунитет для %s игроков был изменен на %d",
+  "createnuclear_radiation.command.change.immunity_xp.multiple": "Опыт иммунитета для %s игроков был изменен на %d",
+  "createnuclear_radiation.command.info.multiple": "Информация о %s игроков:\n",
+  "createnuclear_radiation.command.info.radiation.multiple": "Количество радиации (среднее): %.2f",
+  "createnuclear_radiation.command.info.gettingradiation.multiple": "Получают дозу (среднюю): %.2f",
+  "createnuclear_radiation.command.info.immunity.multiple": "Иммунитет (средний): %.1f",
+  "createnuclear_radiation.command.info.immunity_xp.multiple": "Опыт иммунитета (средний): %s",
+
+  "createnuclear_radiation.system.beta": "Вы используете §eBETA §fверсию §aCreate Nuclear Radiation§f.\nВ ней могут находиться §cбаги и недочеты"
+
+
 }
